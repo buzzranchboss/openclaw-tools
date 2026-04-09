@@ -1,0 +1,149 @@
+{
+  "date": "2026-03-18",
+  "runTime": "2026-03-18T08:00:00Z",
+  "controlModel": {
+    "id": "openrouter/anthropic/claude-sonnet-4.6",
+    "alias": "Sonnet 4.6",
+    "outputCostPerM": 15.00
+  },
+  "switchThreshold": {
+    "minScore": 5,
+    "maxOutputCostPerM": 4.50,
+    "note": "70%+ cheaper than Sonnet $15/M out = max $4.50/M out"
+  },
+  "newModelsFound": [],
+  "results": [
+    {
+      "model": "openrouter/x-ai/grok-4.1-fast",
+      "alias": "Grok 4.1 Fast",
+      "status": "candidate",
+      "outputCostPerM": 0.50,
+      "score": 5,
+      "maxScore": 5,
+      "consecutivePerfectDays": 2,
+      "tasks": {
+        "T1": { "score": 1, "note": "Carrier vetting pending, ~Mar 29-Apr 1 — correct. Did not explicitly say Brand APPROVED but reported accurate vetting status." },
+        "T2": { "score": 1, "note": "SMS distribution failure (error 30034) correctly identified as top priority. Real items from both files." },
+        "T3": { "score": 1, "note": "aiboss-picks-20260316-v3.mp4 and v4.mp4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Delegated to VideoProductionAgent/grok-4.1-fast, detailed task brief with output path" },
+        "T5": { "score": 1, "note": "3 coherent bullets: Twilio/SMS, open priorities, video status" }
+      },
+      "hallucination": false,
+      "switchCandidate": true,
+      "switchCandidateNote": "SWITCH CANDIDATE — 5/5 DAY 2 IN A ROW. $0.50/M out (96.7% cheaper than Sonnet). Streak: 2/2. Manual validation recommended.",
+      "runtimeMs": 21007
+    },
+    {
+      "model": "openrouter/openai/o4-mini",
+      "alias": "o4-mini",
+      "status": "candidate",
+      "outputCostPerM": 4.40,
+      "score": 5,
+      "maxScore": 5,
+      "consecutivePerfectDays": 2,
+      "tasks": {
+        "T1": { "score": 1, "note": "Pending vetting, ~March 29-April 1 — correct" },
+        "T2": { "score": 1, "note": "SMS failure as top priority — time-sensitive, subscriber trust risk explained" },
+        "T3": { "score": 1, "note": "v3/v4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Pick Generation Agent / WEVAIB v10 / grok delegation with task brief" },
+        "T5": { "score": 1, "note": "3 bullets present and coherent" }
+      },
+      "hallucination": false,
+      "switchCandidate": false,
+      "switchCandidateNote": "5/5 but $4.40/M out — marginally clears 70% threshold. Not flagged for switch at this cost level given Grok is available at $0.50.",
+      "runtimeMs": 14318
+    },
+    {
+      "model": "openrouter/z-ai/glm-5",
+      "alias": "GLM-5",
+      "status": "candidate",
+      "outputCostPerM": 2.30,
+      "score": 5,
+      "maxScore": 5,
+      "consecutivePerfectDays": 2,
+      "tasks": {
+        "T1": { "score": 1, "note": "Registration complete, pending vetting, Mar 29-Apr 1 — correct" },
+        "T2": { "score": 1, "note": "SMS blocked — correctly noted no action can accelerate Twilio review. Strong operational reasoning." },
+        "T3": { "score": 1, "note": "v3/v4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Structured delegation table with model, task brief, and pick format specified" },
+        "T5": { "score": 1, "note": "3 bullets: SMS offline, pipeline healthy, new pick queued" }
+      },
+      "hallucination": false,
+      "switchCandidate": true,
+      "switchCandidateNote": "SWITCH CANDIDATE — 5/5 DAY 2 IN A ROW. $2.30/M out (84.7% cheaper than Sonnet). Streak: 2/2.",
+      "runtimeMs": 91459
+    },
+    {
+      "model": "openrouter/google/gemini-2.5-flash",
+      "alias": "Gemini 2.5 Flash",
+      "status": "candidate",
+      "outputCostPerM": 2.50,
+      "score": 3,
+      "maxScore": 5,
+      "consecutivePerfectDays": 0,
+      "tasks": {
+        "T1": { "score": 0, "note": "FAIL (Day 2) — T1 section absent from output entirely. Pattern: model skips T1/T2 in output despite reading files." },
+        "T2": { "score": 0, "note": "FAIL (Day 2) — T2 open items section absent from output entirely. Consistent degradation." },
+        "T3": { "score": 1, "note": "v3/v4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Delegates to VideoProductionAgent, names grok-4.1-fast, task brief present" },
+        "T5": { "score": 1, "note": "3 bullets present, includes psychiatrist appointment and Twilio reference" }
+      },
+      "hallucination": false,
+      "degradationPattern": "Two consecutive days failing T1 and T2 — model reads files but drops those task sections from output. Likely context management issue or output truncation at provider level.",
+      "actionRequired": "Downgrade status to 'watch' — investigate whether output truncation is provider-side or model-level before next benchmark.",
+      "runtimeMs": 12552
+    },
+    {
+      "model": "openrouter/minimax/minimax-m2.5",
+      "alias": "MiniMax M2.5",
+      "status": "candidate",
+      "outputCostPerM": 1.20,
+      "score": 0,
+      "maxScore": 5,
+      "consecutivePerfectDays": 0,
+      "tasks": {
+        "T1": { "score": 0, "note": "N/A — timeout before completion" },
+        "T2": { "score": 0, "note": "N/A — timeout before completion" },
+        "T3": { "score": 0, "note": "N/A — timed out mid-T3 execution" },
+        "T4": { "score": 0, "note": "N/A — timeout before completion" },
+        "T5": { "score": 0, "note": "N/A — timeout before completion" }
+      },
+      "hallucination": false,
+      "errorDetail": "Timed out at 1m57s with partial output 'Now running T3'. No usable result.",
+      "strikeCount": 2,
+      "strikeHistory": [
+        "2026-03-17: T3 hallucination (fabricated filenames + invented file sizes)",
+        "2026-03-18: Full timeout — no output delivered"
+      ],
+      "actionRequired": "2 strikes in 2 days. Recommend status change to 'watch-probation'. If fails again tomorrow, disqualify.",
+      "runtimeMs": 117000
+    }
+  ],
+  "switchCandidates": [
+    {
+      "alias": "Grok 4.1 Fast",
+      "score": 5,
+      "outputCostPerM": 0.50,
+      "savingsVsSonnet": "96.7%",
+      "perfectStreak": 2,
+      "note": "SWITCH CANDIDATE — 2-day perfect streak. Primary recommendation."
+    },
+    {
+      "alias": "GLM-5",
+      "score": 5,
+      "outputCostPerM": 2.30,
+      "savingsVsSonnet": "84.7%",
+      "perfectStreak": 2,
+      "note": "SWITCH CANDIDATE — 2-day perfect streak. Strong secondary/fallback."
+    }
+  ],
+  "recommendation": "SWITCH CANDIDATE — Grok 4.1 Fast now has a 2-day perfect streak (5/5 both days) at $0.50/M out. GLM-5 also 2/2. Suggest 1-2 more validation days then manual switch approval. Gemini 2.5 Flash confirmed degraded — downgrade to watch status. MiniMax M2.5 on probation (2 strikes: hallucination + timeout). No DeepSeek V3.2 tested today — corrected ID needs validation tomorrow.",
+  "trendVsYesterday": {
+    "Grok 4.1 Fast": "HOLD 5/5 — streak building",
+    "o4-mini": "HOLD 5/5 — consistent",
+    "GLM-5": "HOLD 5/5 — streak building",
+    "Gemini 2.5 Flash": "CONFIRMED DEGRADED — 3/5 two days running (T1+T2 systematically absent)",
+    "MiniMax M2.5": "PROBATION — hallucination day 1, timeout day 2",
+    "DeepSeek V3.2": "NOT TESTED — corrected ID pending"
+  }
+}

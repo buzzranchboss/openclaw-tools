@@ -1,0 +1,161 @@
+{
+  "date": "2026-03-17",
+  "runTime": "2026-03-17T08:00:00Z",
+  "controlModel": {
+    "id": "openrouter/anthropic/claude-sonnet-4.6",
+    "alias": "Sonnet 4.6",
+    "outputCostPerM": 15.00
+  },
+  "switchThreshold": {
+    "minScore": 5,
+    "maxOutputCostPerM": 4.50,
+    "note": "70%+ cheaper than Sonnet $15/M out = max $4.50/M out"
+  },
+  "newModelsFound": [],
+  "results": [
+    {
+      "model": "openrouter/x-ai/grok-4.1-fast",
+      "alias": "Grok 4.1 Fast",
+      "status": "candidate",
+      "outputCostPerM": 0.50,
+      "score": 5,
+      "maxScore": 5,
+      "tasks": {
+        "T1": { "score": 1, "note": "Brand APPROVED, carrier vetting, ~April 1-5 — correct" },
+        "T2": { "score": 1, "note": "Dr. Klug March 19 flagged; OrthoSouth today as top priority — correct" },
+        "T3": { "score": 1, "note": "aiboss-picks-20260316-v3.mp4 and v4.mp4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Delegated to WEVAIB/Grok, named model, provided task brief" },
+        "T5": { "score": 1, "note": "3 coherent bullets synthesizing T1-T4" }
+      },
+      "hallucination": false,
+      "switchCandidate": true,
+      "switchCandidateNote": "SWITCH CANDIDATE — 5/5 score AND $0.50/M out (97% cheaper than Sonnet). Manual validation recommended.",
+      "runtimeMs": 19932,
+      "tokensIn": 14700,
+      "tokensOut": 3500
+    },
+    {
+      "model": "openrouter/openai/o4-mini",
+      "alias": "o4-mini",
+      "status": "candidate",
+      "outputCostPerM": 4.40,
+      "score": 5,
+      "maxScore": 5,
+      "tasks": {
+        "T1": { "score": 1, "note": "Brand APPROVED, carrier vetting, ~April 1-5 — correct" },
+        "T2": { "score": 1, "note": "Dr. Klug March 19 flagged; OrthoSouth today as top priority — correct" },
+        "T3": { "score": 1, "note": "aiboss-picks-20260316-v3.mp4 and v4.mp4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Delegated to PickGenerationAgent/WEVAIB v10, named model, task brief present" },
+        "T5": { "score": 1, "note": "3 coherent bullets synthesizing T1-T4" }
+      },
+      "hallucination": false,
+      "switchCandidate": false,
+      "switchCandidateNote": "5/5 score but $4.40/M out — only 70.7% cheaper than Sonnet. Just barely below 70% threshold ($4.50 max). Not flagged.",
+      "runtimeMs": 26000,
+      "tokensIn": 7400,
+      "tokensOut": 2700
+    },
+    {
+      "model": "openrouter/z-ai/glm-5",
+      "alias": "GLM-5",
+      "status": "candidate",
+      "outputCostPerM": 2.30,
+      "score": 5,
+      "maxScore": 5,
+      "tasks": {
+        "T1": { "score": 1, "note": "Brand APPROVED, ~April 1-5 — correct" },
+        "T2": { "score": 1, "note": "Dr. Klug March 19 flagged; OrthoSouth today as top priority — thorough list" },
+        "T3": { "score": 1, "note": "aiboss-picks-20260316-v3.mp4 and v4.mp4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Delegates to subagent, names Grok 4.1 Fast + WEVAIB v10, task brief present" },
+        "T5": { "score": 1, "note": "3 coherent bullets synthesizing T1-T4" }
+      },
+      "hallucination": false,
+      "switchCandidate": true,
+      "switchCandidateNote": "SWITCH CANDIDATE — 5/5 score AND $2.30/M out (84.7% cheaper than Sonnet). Manual validation recommended.",
+      "runtimeMs": 111000,
+      "tokensIn": 8500,
+      "tokensOut": 2500
+    },
+    {
+      "model": "openrouter/minimax/minimax-m2.5",
+      "alias": "MiniMax M2.5",
+      "status": "candidate",
+      "outputCostPerM": 1.20,
+      "score": 4,
+      "maxScore": 5,
+      "tasks": {
+        "T1": { "score": 1, "note": "Brand APPROVED, ~April 1-5 — correct" },
+        "T2": { "score": 1, "note": "Dr. Klug March 19 flagged; OrthoSouth today as top priority — correct" },
+        "T3": { "score": 0, "note": "FAIL — hallucinated filenames: aiboss-picks-20260315-v8.mp4, v9.mp4, aiboss-picks-20260316-v1.mp4 with invented file sizes. Only v3/v4 from 3/16 are confirmed real. Fabricated ls output." },
+        "T4": { "score": 1, "note": "Delegates to VideoProductionAgent, names Grok model, task brief present" },
+        "T5": { "score": 1, "note": "3 coherent bullets" }
+      },
+      "hallucination": true,
+      "hallucinationDetails": "Fabricated filenames and file sizes in T3 output — v8.mp4, v9.mp4 from 3/15 and v1.mp4 from 3/16 not confirmed by rubric; added fake file sizes (12.8MB etc) which exec ls does not return",
+      "switchCandidate": false,
+      "runtimeMs": 93000,
+      "tokensIn": 27100,
+      "tokensOut": 2900
+    },
+    {
+      "model": "openrouter/google/gemini-2.5-flash",
+      "alias": "Gemini 2.5 Flash",
+      "status": "candidate",
+      "outputCostPerM": 2.50,
+      "score": 3,
+      "maxScore": 5,
+      "tasks": {
+        "T1": { "score": 0, "note": "FAIL — did not explicitly state Brand APPROVED or ~April 1-5 date. Said '2-3 weeks from March 15' but rubric requires APPROVED status + clear date." },
+        "T2": { "score": 0, "note": "FAIL — T2 output entirely absent from result. No open items list, no Dr. Klug mention." },
+        "T3": { "score": 1, "note": "aiboss-picks-20260316-v3.mp4 and v4.mp4 confirmed; no hallucinations" },
+        "T4": { "score": 1, "note": "Delegates to Pick Generation Agent, names Grok 4.1 Fast, task brief present" },
+        "T5": { "score": 1, "note": "3 bullets present, references OrthoSouth and Twilio" }
+      },
+      "hallucination": false,
+      "switchCandidate": false,
+      "switchCandidateNote": "Score 3/5 — did not meet 5/5 threshold for switch consideration",
+      "runtimeMs": 102000,
+      "tokensIn": 25700,
+      "tokensOut": 2000
+    },
+    {
+      "model": "openrouter/deepseek/deepseek-chat-v3-5",
+      "alias": "DeepSeek V3.2",
+      "status": "error",
+      "outputCostPerM": 0.42,
+      "score": 0,
+      "maxScore": 5,
+      "tasks": {
+        "T1": { "score": 0, "note": "N/A — model error" },
+        "T2": { "score": 0, "note": "N/A — model error" },
+        "T3": { "score": 0, "note": "N/A — model error" },
+        "T4": { "score": 0, "note": "N/A — model error" },
+        "T5": { "score": 0, "note": "N/A — model error" }
+      },
+      "hallucination": false,
+      "errorDetail": "400 Bad Request — 'deepseek/deepseek-chat-v3-5' is not a valid OpenRouter model ID. Model ID needs correction.",
+      "switchCandidate": false,
+      "actionRequired": "Fix model ID in benchmark-models.json. Correct ID may be openrouter/deepseek/deepseek-v3 or similar. Verify on openrouter.ai/models.",
+      "runtimeMs": 1797,
+      "tokensIn": 0,
+      "tokensOut": 0
+    }
+  ],
+  "switchCandidates": [
+    {
+      "alias": "Grok 4.1 Fast",
+      "score": 5,
+      "outputCostPerM": 0.50,
+      "savingsVsSonnet": "96.7%",
+      "note": "SWITCH CANDIDATE — manual validation recommended"
+    },
+    {
+      "alias": "GLM-5",
+      "score": 5,
+      "outputCostPerM": 2.30,
+      "savingsVsSonnet": "84.7%",
+      "note": "SWITCH CANDIDATE — manual validation recommended"
+    }
+  ],
+  "recommendation": "SWITCH CANDIDATE — Grok 4.1 Fast scores 5/5 at $0.50/M out (97% cheaper than Sonnet). GLM-5 also scores 5/5 at $2.30/M out (85% cheaper). Both warrant manual multi-day validation before routing change. DeepSeek V3.2 model ID is broken — fix required. MiniMax M2.5 hallucinated T3 filenames — flag for continued monitoring. Gemini 2.5 Flash degraded (3/5) — consistent with prior benchmark concerns."
+}

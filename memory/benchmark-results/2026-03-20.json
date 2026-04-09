@@ -1,0 +1,207 @@
+{
+  "date": "2026-03-20",
+  "runTime": "2026-03-20T08:00:00Z",
+  "controlModel": "claude-sonnet-4.6",
+  "controlOutputCostPerM": 15.00,
+  "newModelsDiscovered": [
+    {
+      "alias": "Kimi K2.5",
+      "id": "openrouter/moonshot-ai/kimi-k2.5",
+      "outputCostPerM": 2.00,
+      "note": "Community: 'Sonnet quality at 80% cheaper'. Not on allowlist — cannot test yet."
+    }
+  ],
+  "modelAllowlistFailures": [
+    "openrouter/deepseek/deepseek-v3",
+    "openrouter/openai/gpt-5.4-mini",
+    "openrouter/openai/gpt-5.4-nano",
+    "openrouter/hunter-alpha",
+    "openrouter/minimax/minimax-m2.7",
+    "openrouter/moonshot-ai/kimi-k2.5"
+  ],
+  "groundTruth": {
+    "T1_note": "MEMORY.md has NO Twilio A2P info. Correct answer: say not found, OR find it via session file deep-dive (memory/sessions/2026-03-17.md). Hallucination = inventing A2P status from thin air.",
+    "T3_actual_output": ["work-2026-03-17","work-2026-03-18","work-2026-03-18-v2","work-2026-03-18-v3","work-2026-03-19"],
+    "T3_disqualify_if": "aiboss-picks-20260316 or similar fabricated filenames"
+  },
+  "results": [
+    {
+      "alias": "Grok 4.1 Fast",
+      "id": "openrouter/x-ai/grok-4.1-fast",
+      "outputCostPerM": 0.50,
+      "status": "candidate",
+      "runtimeMs": 16896,
+      "totalTokens": 7767,
+      "scores": {
+        "T1": 1,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 1,
+        "total": 5
+      },
+      "hallucinated": false,
+      "notes": "Fastest by far (17s). Correctly flagged Twilio as absent from MEMORY.md. Real T3 filenames. Clean delegation. Concise T5.",
+      "switchCandidate": false,
+      "costVsControl": "97% cheaper output"
+    },
+    {
+      "alias": "o4-mini",
+      "id": "openrouter/openai/o4-mini",
+      "outputCostPerM": 4.40,
+      "status": "candidate",
+      "runtimeMs": 92537,
+      "totalTokens": 10104,
+      "scores": {
+        "T1": 1,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 1,
+        "total": 5
+      },
+      "hallucinated": false,
+      "notes": "Found Twilio data via deep file read (hip-replacement session). Real T3 filenames. Solid delegation. 93s runtime — slower than competition at this price point.",
+      "switchCandidate": false,
+      "costVsControl": "71% cheaper output"
+    },
+    {
+      "alias": "Gemini 2.5 Flash",
+      "id": "openrouter/google/gemini-2.5-flash",
+      "outputCostPerM": 2.50,
+      "status": "watch",
+      "runtimeMs": 66234,
+      "totalTokens": 8492,
+      "scores": {
+        "T1": 1,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 1,
+        "total": 5
+      },
+      "hallucinated": false,
+      "notes": "Correctly said Twilio not found in MEMORY.md. Real T3 filenames. Clean delegation with correct model name. First perfect run after 2 days on watch. Consider upgrading from watch back to candidate.",
+      "switchCandidate": false,
+      "costVsControl": "83% cheaper output",
+      "statusRecommendation": "Upgrade from watch → candidate after 1 more clean run"
+    },
+    {
+      "alias": "MiniMax M2.5",
+      "id": "openrouter/minimax/minimax-m2.5",
+      "outputCostPerM": 1.20,
+      "status": "watch-probation",
+      "runtimeMs": 77410,
+      "totalTokens": 8621,
+      "scores": {
+        "T1": 1,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 1,
+        "total": 5
+      },
+      "hallucinated": false,
+      "notes": "First clean run since going on probation. Correctly said Twilio not in MEMORY/staff-log. Real T3 filenames (probation strike NOT triggered). Good delegation. Probation strike 3 avoided.",
+      "switchCandidate": false,
+      "costVsControl": "92% cheaper output",
+      "statusRecommendation": "Remains on probation — 1 more clean run needed to graduate back to candidate"
+    },
+    {
+      "alias": "GLM-5",
+      "id": "openrouter/z-ai/glm-5",
+      "outputCostPerM": 2.30,
+      "status": "candidate",
+      "runtimeMs": 150308,
+      "totalTokens": 15663,
+      "scores": {
+        "T1": 1,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 1,
+        "total": 5
+      },
+      "hallucinated": false,
+      "notes": "Most thorough. Found Twilio in sessions/2026-03-17.md. T2 surfaced 6 open items including FanDuel affiliate, Caesars retry, Rob Pita — far beyond other models. Slowest at 150s. High token use.",
+      "switchCandidate": false,
+      "costVsControl": "85% cheaper output"
+    },
+    {
+      "alias": "DeepSeek V3.2",
+      "id": "openrouter/deepseek/deepseek-v3",
+      "outputCostPerM": 0.42,
+      "status": "candidate",
+      "runtimeMs": null,
+      "totalTokens": null,
+      "scores": {
+        "T1": null,
+        "T2": null,
+        "T3": null,
+        "T4": null,
+        "T5": null,
+        "total": null
+      },
+      "hallucinated": null,
+      "notes": "NOT TESTED — model not on allowlist. Cannot spawn subagents with this model.",
+      "switchCandidate": false,
+      "costVsControl": "97% cheaper output"
+    },
+    {
+      "alias": "GPT-5.4 Mini",
+      "id": "openrouter/openai/gpt-5.4-mini",
+      "outputCostPerM": 4.50,
+      "status": "candidate",
+      "runtimeMs": null,
+      "totalTokens": null,
+      "notes": "NOT TESTED — model not on allowlist.",
+      "switchCandidate": false
+    },
+    {
+      "alias": "GPT-5.4 Nano",
+      "id": "openrouter/openai/gpt-5.4-nano",
+      "outputCostPerM": 1.25,
+      "status": "candidate",
+      "runtimeMs": null,
+      "totalTokens": null,
+      "notes": "NOT TESTED — model not on allowlist.",
+      "switchCandidate": false
+    },
+    {
+      "alias": "Hunter Alpha (Stealth)",
+      "id": "openrouter/hunter-alpha",
+      "outputCostPerM": 0.00,
+      "status": "candidate",
+      "runtimeMs": null,
+      "totalTokens": null,
+      "notes": "NOT TESTED — model not on allowlist.",
+      "switchCandidate": false
+    },
+    {
+      "alias": "MiniMax M2.7",
+      "id": "openrouter/minimax/minimax-m2.7",
+      "outputCostPerM": 1.20,
+      "status": "candidate",
+      "runtimeMs": null,
+      "totalTokens": null,
+      "notes": "NOT TESTED — model not on allowlist.",
+      "switchCandidate": false
+    },
+    {
+      "alias": "Kimi K2.5",
+      "id": "openrouter/moonshot-ai/kimi-k2.5",
+      "outputCostPerM": 2.00,
+      "status": "candidate",
+      "runtimeMs": null,
+      "totalTokens": null,
+      "notes": "NOT TESTED — model not on allowlist. NEW — added to benchmark-models.json as candidate today based on community reports.",
+      "switchCandidate": false
+    }
+  ],
+  "barChart": "Grok 4.1 Fast    [████████████████████████████████] 5/5  $0.50/M out\no4-mini          [████████████████████████████████] 5/5  $4.40/M out\nGemini 2.5 Flash [████████████████████████████████] 5/5  $2.50/M out\nMiniMax M2.5     [████████████████████████████████] 5/5  $1.20/M out\nGLM-5            [████████████████████████████████] 5/5  $2.30/M out\nDeepSeek V3.2    [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] N/T  $0.42/M out (allowlist block)\nGPT-5.4 Mini     [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] N/T  $4.50/M out (allowlist block)\nGPT-5.4 Nano     [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] N/T  $1.25/M out (allowlist block)\nHunter Alpha     [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] N/T  $0.00/M out (allowlist block)\nMiniMax M2.7     [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] N/T  $1.20/M out (allowlist block)\nKimi K2.5        [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] N/T  $2.00/M out (allowlist block, NEW)",
+  "recommendation": "HOLD — Grok 4.1 Fast is the clear value winner at 5/5 + $0.50/M out (97% cheaper than Sonnet). No SWITCH CANDIDATE triggered today (5/5 + 70%+ cheaper requires tested model). 6 models blocked by allowlist — Dave should review allowlist to unlock DeepSeek V3.2, Hunter Alpha, MiniMax M2.7, Kimi K2.5 for future benchmark runs.",
+  "routingStatus": "Current routing: claude-sonnet-4.6 (default). Grok 4.1 Fast continues to prove out daily. MiniMax M2.5 recovered clean run (probation continues). Gemini 2.5 Flash rebounded from watch.",
+  "allowlistActionRequired": true,
+  "allowlistBlockedModels": 6,
+  "allowlistNote": "6 of 11 candidate models cannot be tested due to model policy restrictions. Dave needs to review openclaw model allowlist to unlock: deepseek/deepseek-v3, openai/gpt-5.4-mini, openai/gpt-5.4-nano, hunter-alpha, minimax/minimax-m2.7, moonshot-ai/kimi-k2.5"
+}
